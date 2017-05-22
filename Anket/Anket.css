@@ -1,0 +1,39 @@
+﻿input[type=text] {
+   
+    width:50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#gonder {
+
+   width:20%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#gonder:hover {
+   opacity: 1;
+   background-color: #45a049;
+
+}
+
+h1{
+    width:50%;
+    text-align:center
+}
+
+div {
+
+    border-radius: 5px;
+    padding: 20px;
+}
