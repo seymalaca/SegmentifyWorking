@@ -1,4 +1,4 @@
-﻿input[type=text] {
+﻿input[type=text]{
    
     width:50%;
     padding: 12px 20px;
@@ -8,6 +8,7 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
+
 
 #gonder {
 
@@ -37,3 +38,4 @@ div {
     border-radius: 5px;
     padding: 20px;
 }
+
