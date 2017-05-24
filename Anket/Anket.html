@@ -1,19 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <style>
-       select{
-   
-    width:50%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-      }
 
-    </style>
     <title>Anket Formu</title>
     <meta charset="utf-8" />
 
@@ -21,26 +9,13 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
 
     <script src="Anket.js"></script>
+  
     <link rel="stylesheet" type="text/css" href="Anket.css">
     
-    <script type="text/javascript">
-        function validateForm() {
-            var x = document.forms["anket"]["ad"].value;
-            var y = document.forms["anket"]["soyad"].value;
-            var z = document.forms["anket"]["phone"].value;
-            if (x == "" || y=="" || z=="" ) {
-                alert("Yıldızlı alanlar boş bırakılamaz.");
-                return false;
-            }
-           
-        }
-
-    </script>
-
 </head>
 <body>
     <div>
-        <form name="anket" id="anketform" action="/action_page.php">
+        <form name="anket" id="anketform">
 
             <h1>Anket Formu</h1><br>
             Ad*:<br>
@@ -56,17 +31,17 @@
             <input type="text" name="phone" value="" id="tel" placeholder="05xxxxxxxxx" required="required"  onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
             <br>
             Hobileriniz:<br>
-            <select id="hobi" name="hobiler" on>
-                <option value="muzik">Müzik Dinleme</option>
-                <option value="kitap">Kitap okuma</option>
-                <option value="yuruyus">Yürüyüş Yapma</option>
-                <option value="seyahat">Seyahat etme</option>
-                <option value="diger" id="diger">Diğer</option>
-            </select>
+            <input type="checkbox" name="hobiler" value="muzik" class="chk ">Müzik<br>
+            <input type="checkbox" name="hobiler" value="kitap" class="chk ">Kitap<br>
+            <input type="checkbox" name="hobiler" value="yuruyus" class="chk ">Yürüyüş<br>
+            <input type="checkbox" name="hobiler" value="seyahat" class="chk " >Seyahat<br>
+            <input type="checkbox" name="hobiler" value="spor"  class="chk ">Spor<br>
+            <input type="checkbox" name="hobiler" value="diger" id="diger" class="chk ">Diğer<br>
+
             <br>
-            <input type="text" placeholder="Hobilerinizi giriniz" id="digerhobi" style="visibility:hidden" name="digerhobi" />
+            <input type="text" placeholder="Hobilerinizi giriniz" id="digerhobi" style="visibility:visible" name="digerhobi" />
             <br>
-            <input type="button" value="Gönder" id="gonder"  onclick="validateForm()"> 
+            <input type="button" value="Gönder" id="gonder"> 
 
         </form>
     </div>
