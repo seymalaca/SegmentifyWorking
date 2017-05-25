@@ -13,7 +13,9 @@
     });
     
 
-    (jQuery)("#gonder").click(function (event) {
+    (jQuery)("#gonder").click(function (e) {
+        window.location = "Hobiler.html";
+
 
         if ((jQuery)('#ad').val() == "" || (jQuery)('soyad').val() == "" || (jQuery)('#tel').val() == "") {
             alert("Yıldızlı alanlar boş bırakılamaz.");
@@ -41,9 +43,23 @@
         hobiler: updatedHobi
         }
   
-        console.log(bilgiler);              
+        e.preventDefault();
+        var id = $(this).data("id");
+        console.log(id); // i am getting value in this id 
+     
+        console.log(bilgiler);
 
-    });
+        
+        setCookie("_deneme_cookie", JSON.stringify(bilgiler), 5);
+    
+    })
 
-    (jQuery)("#anketform")[0].reset();
+
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    
 });
