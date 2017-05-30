@@ -1,4 +1,6 @@
-/* Kod içerisine hangi satırın ne iş yaptığını anlatan açıklama satırları ekleyebilir misin ? :)*/
+/* Kod içerisine hangi satırın ne iş yaptığını anlatan açıklama satırları ekleyebilir misin ? :)
+Ek olarak X bir durumda kod üzerinde hata oldu diyelim, bunu müşteriye ya da console'a basmadan nasıl yakalayabilirsin?
+*/
 function product() {
 var size=[];
 var color=[];
