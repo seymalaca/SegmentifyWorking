@@ -1,3 +1,4 @@
+/* Kod içerisine hangi satırın ne iş yaptığını anlatan açıklama satırları ekleyebilir misin ? :)*/
 function product() {
 var size=[];
 var color=[];
@@ -33,4 +34,3 @@ jQuery('.opt_renk a').each(function() {
 }
 return pr;
 }
-       
