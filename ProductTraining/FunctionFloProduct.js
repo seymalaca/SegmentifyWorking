@@ -17,19 +17,20 @@ jQuery('.opt_renk a').each(function() {
             });
 	var pr={
 	"name": "PRODUCT_VIEW",
-	'pageUrl':window.location.href,
+	'pageUrl':(jQuery)('link[rel="canonical"]').attr("href"),
+	'"productId':(jQuery)('#socialmedia a').attr("code"),
 	'title':jQuery(".productDesc").text().trim(),
-	'url': window.location.href,
+	'url': (jQuery)('link[rel="canonical"]').attr("href"),
 	'image':(jQuery)('.galleryImg').attr('src'),
 	'categories': (jQuery)('meta[name="sgm:pageCat"]').attr("content").split(">"),
-	'price': (jQuery)('.newPrice:first').text().replace(',', '.'),
-	'inStock':(jQuery)(".button block bg-red sepete-ekle urun-detay-sepete-ekle sp-goal-672-c308-22-1492031008114").is(":visible"),//burası false dönüyor,sebebini anlayamadım
+	'price': ((jQuery)('#product-item div.productPrices span.newPrice').text().trim().replace(',', '.').split(/\s+/))[0],
+	'inStock':(jQuery)(".button block bg-red sepete-ekle urun-detay-sepete-ekle sp-goal-672-c308-22-1492031008114").is(":visible"),
 	'brand':(jQuery)(".productTitle").text().trim(),
 	'gender':(jQuery)("td[data-attr='cinsiyet']").text().trim(),
-	'labels':(jQuery)("table[class='amlabel-table top-center']"),//bunun ile istediğin kısımları döndürüyorum sanırım fakat "yeni, internete özel" gibi text'leri alacağım yeri bulamadım. style kısmındaki resmin source edildiği png uzantılı dosyanın isminde geçiyor sadece ordan çekmek de saçma geldi:)
+	'labels':(jQuery)("table[class='amlabel-table top-center']"),
 	'sizes': size,
 	'colors': color,
-	'productUrl':window.location.href
+	'productUrl':(jQuery)('link[rel="canonical"]').attr("href")
 }
 return pr;
 }
