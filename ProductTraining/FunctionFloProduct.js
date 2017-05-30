@@ -1,21 +1,18 @@
-/* Kod içerisine hangi satırın ne iş yaptığını anlatan açıklama satırları ekleyebilir misin ? :)
-Ek olarak X bir durumda kod üzerinde hata oldu diyelim, bunu müşteriye ya da console'a basmadan nasıl yakalayabilirsin?
-*/
 function product() {
 var size=[];
 var color=[];
-jQuery('#product_addtocart_form label').each(function() {
+jQuery('#product_addtocart_form label').each(function() { //id'si product_addtocart_form olan element'in tüm label'larına bakılıyor.
             
-                if(jQuery(this).attr('class')!="notsalable") {
-                  size.push(jQuery(this).find('.size-number').text().trim());
+                if(jQuery(this).attr('class')!="notsalable") { //bakılanlar'ın class attribute'u notsalable'a eşit değilse alt satırdaki kod çalışıyor.
+                  size.push(jQuery(this).find('.size-number').text().trim()); //class'ı size-number olanlar "size" adlı yukarıda oluşturduğum değişkene ekleniyor.
                 }
 
               
             });
 
-jQuery('.opt_renk a').each(function() {
+jQuery('.opt_renk a').each(function() { //opt_renk class'ında ve a etiketi altında olan her bir elemente bakılıyor.
           
-                color.push(jQuery(this).attr('title'));
+                color.push(jQuery(this).attr('title')); //her element'in title'ı yukarıda oluşturduğum color adlı değişkene ekleniyor.
               
             });
 	var pr={
@@ -37,3 +34,4 @@ jQuery('.opt_renk a').each(function() {
 }
 return pr;
 }
+       
