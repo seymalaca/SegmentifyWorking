@@ -1,13 +1,17 @@
 function product() {
 var size=[],color=[],label=[],gender;
-
+try{
 if((jQuery)("td[data-attr='cinsiyet']").text().trim()=="Kadın")//data-attr değeri 'cinsiyet' olan td elementinin text'i alınıyor ve gerekli kontroller if else yapısı ile sağlanıyor.
 gender="F";
 else if((jQuery)("td[data-attr='cinsiyet']").text().trim()=="Erkek")
 gender="M";
 else if((jQuery)("td[data-attr='cinsiyet']").text().trim()=="Unisex")
 gender="U";
-
+}
+catch(err){
+	window.Err=err;
+}
+try{
 jQuery('.amlabel-table td').each(function() { //class'ı amlabel-table olanların tüm td'lerine bakılıyor.
             
                 if((jQuery(this).attr('style').trim().split(/[/.]/).splice(-2,1).pop())=="00yeni_2")//bakılanların trim() ile boşlukları temizleniyor. alınan string regex kullanılarak "/" ve "." karakterlerine göre split ediliyor. bu durumda string'deki ".png"den sonrası son eleman oluyor.bunu kaldırıp ".png"den öncesini almak için; splice içindeki -2 sayesinde sondan bir önceden başlanıyor, splice içindeki 1 sayesinde bir tane eleman siliniyor. pop ile de son elemana ulaşılıyor. gerekli kontroller if else yapısı ile sağlanıyor.
@@ -18,6 +22,11 @@ jQuery('.amlabel-table td').each(function() { //class'ı amlabel-table olanları
 
               
             });
+}
+catch(err){
+	window.Err=err;
+}
+try{
 jQuery('#product_addtocart_form label').each(function() { //id'si product_addtocart_form olan element'in tüm label'larına bakılıyor.
             
                 if(jQuery(this).attr('class')!="notsalable") { //bakılanların class attribute'u notsalable'a eşit değilse alt satırdaki kod çalışıyor.
@@ -26,12 +35,19 @@ jQuery('#product_addtocart_form label').each(function() { //id'si product_addtoc
 
               
             });
-
+}
+catch(err){
+	window.Err=err;
+}
+try{
 jQuery('.opt_renk a').each(function() { //opt_renk class'ında ve a etiketi altında olan her bir elemente bakılıyor.
           
                 color.push(jQuery(this).attr('title')); //her element'in title'ı yukarıda oluşturduğum color adlı değişkene ekleniyor.
               
             });
+catch(err){
+	window.Err=err;
+}
 	var pr={
 	"name": "PRODUCT_VIEW", //sabit
 	'pageUrl':(jQuery)('link[rel="canonical"]').attr("href"), //rel değeri canonical'a eşit linkin href attribute'u alınıyor.
