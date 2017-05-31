@@ -1,12 +1,20 @@
 function product() {
-var size=[];
-var color=[];
-var label=[];
+var size=[],color=[],label=[],gender;
+
+if((jQuery)("td[data-attr='cinsiyet']").text().trim()=="Kadın")//data-attr değeri 'cinsiyet' olan td elementinin text'i alınıyor ve gerekli kontroller if else yapısı ile sağlanıyor.
+gender="F";
+else if((jQuery)("td[data-attr='cinsiyet']").text().trim()=="Erkek")
+gender="M";
+else if((jQuery)("td[data-attr='cinsiyet']").text().trim()=="Unisex")
+gender="U";
+
 jQuery('.amlabel-table td').each(function() { //class'ı amlabel-table olanların tüm td'lerine bakılıyor.
             
-                if(jQuery(this).attr('style')!="") {
-                  label.push(jQuery(this).attr('style').trim().split(/[/.]/).splice(-2,1).pop());//bakılanların trim() ile boşlukları temizleniyor. alınan string regex kullanılarak "/" ve "." karakterlerine göre split ediliyor. bu durumda string'deki ".png"den sonrası son eleman oluyor.bunu kaldırıp ".png"den öncesini almak için; splice içindeki -2 sayesinde sondan bir önceden başlanıyor, splice içindeki 1 sayesinde bir tane eleman siliniyor. pop ile de son elemana ulaşılıyor. 
-                }
+                if((jQuery(this).attr('style').trim().split(/[/.]/).splice(-2,1).pop())=="00yeni_2")//bakılanların trim() ile boşlukları temizleniyor. alınan string regex kullanılarak "/" ve "." karakterlerine göre split ediliyor. bu durumda string'deki ".png"den sonrası son eleman oluyor.bunu kaldırıp ".png"den öncesini almak için; splice içindeki -2 sayesinde sondan bir önceden başlanıyor, splice içindeki 1 sayesinde bir tane eleman siliniyor. pop ile de son elemana ulaşılıyor. gerekli kontroller if else yapısı ile sağlanıyor.
+					label.push("Yeni");
+				else if((jQuery(this).attr('style').trim().split(/[/.]/).splice(-2,1).pop())=="0internete_ozel")  
+              		label.push("İnternete Özel");
+
 
               
             });
@@ -35,7 +43,7 @@ jQuery('.opt_renk a').each(function() { //opt_renk class'ında ve a etiketi alt�
 	'price': ((jQuery)('#product-item div.productPrices span.newPrice').text().trim().replace(',', '.').split(/\s+/))[0], // id'si product-item,div class'ı productPrices, span class'ı newPrice olan elemente ulaşılıyor. "," yerine "." konuluyor. split; regex ile sağlanıyor.\s sayesinde boşluğa göre split ediliyor.
 	'inStock':(jQuery)(".button.block.bg-red.sepete-ekle.urun-detay-sepete-ekle").is(":visible"), //class'ı verilen button'un visibility'si kontrol ediliyor. visible ise true dönüyor.
 	'brand':(jQuery)(".productTitle").text().trim(), //class'ı productTitle olan elementin text'i alınıp trim ile boşlukları temizleniyor.
-	'gender':(jQuery)("td[data-attr='cinsiyet']").text().trim(), //data-attr değeri 'cinsiyet' olan td elementinin text'i alınıyor.
+	'gender':gender, //data-attr değeri 'cinsiyet' olan td elementinin text'i alınıyor.
 	'labels':label,
 	'sizes': size,
 	'colors': color,
