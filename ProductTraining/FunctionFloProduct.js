@@ -54,6 +54,8 @@ jQuery('.opt_renk a').each(function() {
 catch(err){
 	window.Err=err;
 }
+
+try{
 	var pr={
 	//sabit
 	"name": "PRODUCT_VIEW", 
@@ -82,6 +84,14 @@ catch(err){
 	'colors': color,
 	'productUrl':(jQuery)('link[rel="canonical"]').attr("href")
 }
+
+
 return pr;
+
+}
+catch(err){
+	window.Err=err;
+}
+
 }
        
