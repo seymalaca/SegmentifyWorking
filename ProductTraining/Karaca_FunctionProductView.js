@@ -1,26 +1,24 @@
 function product() {
-var categories=[];
-try{
-categories.push((jQuery)('ul[class="breadcrumbs product-breadcrumb"] li').eq(-3).text());
-categories.push((jQuery)('ul[class="breadcrumbs product-breadcrumb"] li').eq(-2).text());
 
-}
-catch(err){
-	window.Err=err;
-}
 try{
 	var pr={
-	"brand":(jQuery)('#logo a').attr("title"),
-	"categories":categories,
-	"category": (jQuery)('ul[class="breadcrumbs product-breadcrumb"] li').eq(-3).text()+">"+(jQuery)('ul[class="breadcrumbs product-breadcrumb"] li').eq(-2).text(),
-	"name": "PRODUCT_VIEW", 
-	'image':jQuery("#thumblist li.active-thumb a img" ).attr("src"),
+	//property özelliği og:title olan meta elementinin content'i alınıp boşluğa göre split ediliyor. ve split edilen array'in ilk elemanı alınıyor.
+	"brand":(jQuery)('meta[property="og:title"]').attr("content").trim().split(" ").shift(),
+	//sabit
+	"name": "PRODUCT_VIEW",
+	//property özelliği og:image olan meta elementinin content'i alınıyor.
+	'image':(jQuery)('meta[property="og:image"]').attr("content"),
+	//itemtype'ı http://schema.org/Offer olan div'in del elementinin text'i alınıyor, boşluğa göre split edilip ilk elemen alınıyor.
+	"oldPrice":(jQuery)('div[itemtype="http://schema.org/Offer"] del').text().trim().split(" ").shift(),
+	//rel değeri canonical'a eşit linkin href attribute'u alınıyor.
 	'pageUrl':(jQuery)('link[rel="canonical"]').attr("href"), 
-	'inStock':(jQuery)('div[class="p-add-basket"] button[class="btn-add-basket p-detail-add-basket"]').is(":visible"),
-	'price': (jQuery)('meta[property="product:price:amount"]').attr("content").trim().replace(',', '.').split(" ")[0], 
-	'productId':(jQuery)('.p-alternative ul').attr("data-id"),
-	'title':(jQuery)('meta[property="og:title"]').attr("content").split(/ (.+)/)[1],
-	'url': (jQuery)('link[rel="canonical"]').attr("href") 
+	//id'si addcart olan butonun visibility'sine bakılıyor.
+	'inStock':(jQuery)('#addcart').is(":visible"),
+	//itemprop değeri price olan p elementinin text'i boşluğa göre split ediliyor ve ilk eleman alınıyor.
+	'price': (jQuery)('p[itemprop="price"]').text().trim().split(" ").shift(), 
+	'productUrl':(jQuery)('link[rel="canonical"]').attr("href"),
+	'url': (jQuery)('link[rel="canonical"]').attr("href"),
+
 
 	}
 return pr;
